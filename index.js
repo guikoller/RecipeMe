@@ -35,5 +35,12 @@ app.get("/ingredientes",(req,res) => {
     res.render("ingredientes")
 })
 
+app.get("/estoque",(req,res) => {
+    res.render("estoque")
+})
+
+app.get("/perfil",(req,res) => {
+    res.render("perfil")
+})
 
 app.listen(port, () => console.log(`Application running at the port ${port}`))

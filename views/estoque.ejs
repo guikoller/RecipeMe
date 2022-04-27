@@ -1,0 +1,47 @@
+<%- include('partials/header.ejs') %>
+
+	<body>
+		<%- include('partials/navbar.ejs') %>
+			<div class="container">
+				<div class="card p-3">
+					<h1>Estoque</h1>
+					<hr>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th scope="col">Nome</th>
+								<th scope="col">Quantidade</th>
+								<th scope="col">Unidade</th>
+								<th scope="col">Remover</th>
+								<th scope="col">Adicionar</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Macaco</td>
+								<td>1</td>
+								<td>Un.</td>
+								<td><a class="btn btn-danger" href="#">-</a></td>
+								<td><a class="btn btn-success" href="#">+</a></td>
+							</tr>
+							<tr>
+								<td>Abacaxi</td>
+								<td>1</td>
+								<td>Un.</td>
+								<td><a class="btn btn-danger" href="#">-</a></td>
+								<td><a class="btn btn-success" href="#">+</a></td>
+							</tr>
+							<tr>
+								<td>Cocaína</td>
+								<td>2</td>
+								<td>Kg.</td>
+								<td><a class="btn btn-danger" href="#">-</a></td>
+								<td><a class="btn btn-success" href="#">+</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+	</body>
+	<%- include('partials/footer.ejs') %>
