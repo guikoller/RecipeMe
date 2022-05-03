@@ -27,7 +27,7 @@ app.get("/receitas",(req,res) => {
     res.render("receitas")
 })
 
-app.get("/mamaco",(req,res) => {
+app.get("/receita",(req,res) => {
     res.render("receita")
 })
 
