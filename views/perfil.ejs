@@ -1,0 +1,63 @@
+<%- include('partials/header.ejs') %>
+
+	<body>
+		<%- include('partials/navbar.ejs') %>
+			<div class="container">
+				<div class="container rounded bg-white mt-5 mb-5">
+					<div class="row">
+						<div class="col-md-3 border-right">
+							<div class="d-flex flex-column align-items-center text-center p-3 py-5"><img
+									class="rounded-circle mt-5" width="150px"
+									src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+									class="font-weight-bold">Cirilo</span><span
+									class="text-black-50">laudelino@mail.com</span><span> </span></div>
+						</div>
+						<div class="col-md-5 border-right">
+							<div class="p-3 py-5">
+								<div class="d-flex justify-content-between align-items-center mb-3">
+									<h4 class="text-right">Configurações do Perfil</h4>
+								</div>
+								<div class="row mt-2">
+									<div class="col-md-6"><label class="labels">Nome</label><input type="text"
+											class="form-control" placeholder="Guilherme" value=""></div>
+									<div class="col-md-6"><label class="labels">Sobrenome</label><input type="text"
+											class="form-control" value="" placeholder="Koller"></div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-md-12"><label class="labels">Númemro</label><input type="text"
+											class="form-control" placeholder="41 99999-9999" value="">
+									</div>
+									<div class="col-md-12"><label class="labels">Endereço</label><input type="text"
+											class="form-control" placeholder="Avenida Sete de Setembro" value=""></div>
+									<div class="col-md-12"><label class="labels">CEP</label><input type="text"
+											class="form-control" placeholder="888888-555" value=""></div>
+									<div class="col-md-12"><label class="labels">Cidade</label><input type="text"
+											class="form-control" placeholder="Curitiba" value=""></div>
+									<div class="col-md-12"><label class="labels">Estado</label><input type="text"
+											class="form-control" placeholder="Paraná" value=""></div>
+								</div>
+								<div class="row mt-3">
+									<div class="col-md-6"><label class="labels">País</label><input type="text"
+											class="form-control" placeholder="Brasil" value=""></div>
+								</div>
+								<div class="mt-5 text-center"><button class="btn btn-primary profile-button"
+										type="button">Salvar</button></div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="p-3 py-5">
+								<div class="d-flex justify-content-between align-items-center experience"><span>Minhas
+										Receitas</span><span class="border px-3 p-1 add-experience"><i
+											class="fa fa-plus"></i>&nbsp;Editar</span></div><br>
+								<div class="d-flex justify-content-between align-items-center experience"><span>Meus
+										Ingredientes</span><span class="border px-3 p-1 add-experience"><i
+											class="fa fa-plus"></i>&nbsp;Editar</span></div><br>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+			</div>
+	</body>
+	<%- include('partials/footer.ejs') %>
