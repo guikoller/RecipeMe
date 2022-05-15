@@ -2,6 +2,11 @@
 ## Analise e Projeto de Sistemas - S71
  ### Para executar o projeto, executar os seguintes comandos no terminal:
 
+- Para criar o banco de dados e as tabelas
+```console
+$ sudo mysql --local-infile=1 -u root -p1 < script.sql
+```
+
 - Para instalar o npm:
 ```console
 $ sudo apt update
