@@ -12,10 +12,16 @@ $ sudo mysql --local-infile=1 -u root -p1 < script.sql
 $ sudo apt update
 $ sudo apt install npm
 ```
-- Para instalar as dependências do projeto e executar o projeto:
+- Para instalar as dependências do projeto e executar o servidor:
 ```console
+$ cd server
 $ npm install
 $ node index.js
+```
+- Para executar o cliente:
+```console
+$ cd client
+$ npm run serve
 ```
  - Abrir no navegador:
 ```browse
