@@ -1,9 +1,9 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const auth = require('./middleware')
-const app = express()
 const apiRoutes = require('./routes/index');
+
 const port = 8081
+const app = express()
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());

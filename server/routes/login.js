@@ -1,6 +1,6 @@
 const express = require('express')
 const jwt = require('jsonwebtoken')
-const Authenticator = require('../authenticator')
+const Authenticator = require('../utils/authenticator')
 const app = express()
 
 app.post("/login", (req,res) => {

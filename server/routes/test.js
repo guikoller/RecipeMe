@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const auth = require('../middleware')
+const auth = require('../utils/middleware')
 
 app.get("/", auth, (req,res) => {
     res.status(200)
