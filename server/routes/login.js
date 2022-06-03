@@ -11,17 +11,16 @@ app.post("/login", (req,res) => {
     let query = `SELECT
                     CASE WHEN EXISTS 
                     (
-                        select id from usuarios where login = ? and senha = ?
+                        SELECT id FROM usuarios WHERE login = ? AND senha = ?
                     )
                     THEN 'TRUE'
                     ELSE 'FALSE'
-                END as "exists"`
+                END AS "exists"`
     
     data.push(email)
     data.push(senha)
     
     db.query(query, data, (err, result) => {
-        console.log(result)
         if(result[0].exists == 'TRUE'){
             jwt.sign({email: email}, 'laudelindo', {expiresIn: '48h'}, (err, token) => {
                 if (err) {
@@ -34,9 +33,13 @@ app.post("/login", (req,res) => {
             })
         }else{
             res.status(401)
-            res.send("NÃO AUTORIZADO")
+            res.send("Erro: Usuário não cadastrado")
         }
     })    
+})
+
+app.post("/create", (req,res) => {
+       
 })
 
 module.exports = app;
