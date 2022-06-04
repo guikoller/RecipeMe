@@ -6,47 +6,47 @@ use recipeme;
 
 create table categorias(
     id int primary key not null auto_increment,
-    nome varchar(100)
+    nome varchar(100) not null
 );
 
 create table usuarios (
   id int primary key not null auto_increment,
-  nome varchar(100),
-  sobrenome varchar(100),
-  login varchar(100),
-  data_nascimento DATE,
-  genero varchar(45),
-  newsletter tinyint,
-  senha varchar(100)
+  nome varchar(100) not null,
+  sobrenome varchar(100) not null,
+  login varchar(100) not null unique,
+  data_nascimento DATE not null,
+  genero varchar(45) not null,
+  newsletter tinyint not null,
+  senha varchar(100) not null
 );
 
 create table medidas(
     id int primary key not null auto_increment,
-    nome varchar(100),
-    volume decimal(10,2)
+    nome varchar(100) not null,
+    volume decimal(10,2) not null
 );
 
 create table ingredientes(
     id int primary key not null auto_increment,
-    nome varchar(100)
+    nome varchar(100) not null
 );
 
 create table receitas(
     id int primary key not null auto_increment,
-    usuario int,
-    categoria int,
+    usuario int not null,
+    categoria int not null,
     nome varchar(100),
-    descricao text,
-    rendimento decimal(2,1),
-    tempo_preparo time,
+    descricao text not null,
+    rendimento decimal(2,1) not null,
+    tempo_preparo time not null,
     foreign key (usuario) references usuarios(id),
     foreign key (categoria) references categorias(id)
 );
 
 create table ingredientes_receita(
-    ingrediente int,
-    receita int,
-    medida int,
+    ingrediente int not null,
+    receita int not null,
+    medida int not null,
     quantidade decimal(10,2),
     foreign key (ingrediente) references ingredientes(id),
     foreign key (receita) references receitas(id),
@@ -54,18 +54,18 @@ create table ingredientes_receita(
 );
 
 create table comentarios(
-    usuario int,
-    receita int,
-    data DATE,
+    usuario int not null,
+    receita int not null,
+    data DATE not null,
     avaliacao decimal(1,1),
     texto varchar(350)
 );
 
 create table estoque(
-    ingrediente int,
-    usuario int,
-    medida int,
-    quantidade decimal(10,2),
+    ingrediente int not null,
+    usuario int not null,
+    medida int not null,
+    quantidade decimal(10,2) not null,
     foreign key (ingrediente) references ingredientes(id),
     foreign key (usuario) references usuarios(id),
     foreign key (medida) references medidas(id)
