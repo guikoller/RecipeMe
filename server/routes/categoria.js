@@ -1,8 +1,9 @@
 const express = require('express')
 const app = express()
 const db = require('../database')
+const auth =  require('../utils/middleware')
 
-app.post("/", (req,res) => {
+app.post("/", auth,(req,res) => {
     let nome = req.body.nome
     let data = []
 
@@ -23,7 +24,7 @@ app.post("/", (req,res) => {
     }) 
 })
 
-app.get("/", (req,res) => {
+app.get("/", auth, (req,res) => {
     let id = req.query.id
     let data = []
 
@@ -51,7 +52,7 @@ app.get("/", (req,res) => {
     })         
 })
 
-app.put("/", (req,res) => {
+app.put("/", auth, (req,res) => {
     let id = req.body.id
     let nome = req.body.nome
     let data = []
@@ -74,7 +75,7 @@ app.put("/", (req,res) => {
  
 })
 
-app.delete("/", (req,res) => {
+app.delete("/", auth, (req,res) => {
     let id = req.body.id
     let data = []
 
