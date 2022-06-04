@@ -28,7 +28,7 @@ create table medidas(
 
 create table ingredientes(
     id int primary key not null auto_increment,
-    nome varchar(100) not null
+    nome varchar(100) not null unique
 );
 
 create table receitas(
