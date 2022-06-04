@@ -4,31 +4,24 @@ const app = express()
 const db = require('../database')
 
 app.post("/login", (req,res) => {
-    let email = req.body.login
+    let login = req.body.login
     let senha = req.body.senha
 
     let data = []
-    let query = `SELECT
-                    CASE WHEN EXISTS 
-                    (
-                        SELECT id FROM usuarios WHERE login = ? AND senha = ?
-                    )
-                    THEN 'TRUE'
-                    ELSE 'FALSE'
-                END AS "exists"`
+    let query = `SELECT id FROM usuarios WHERE login = ? AND senha = ?`
     
-    data.push(email)
+    data.push(login)
     data.push(senha)
     
     db.query(query, data, (err, result) => {
-        if(result[0].exists == 'TRUE'){
-            jwt.sign({email: email}, 'laudelindo', {expiresIn: '48h'}, (err, token) => {
+        if(result.length > 0){
+            jwt.sign({login: login}, 'laudelindo', {expiresIn: '48h'}, (err, token) => {
                 if (err) {
                     res.status(400)
                     res.send("ERROR: " + err )
                 } else {
                     res.status(200)
-                    res.send({'jwt': token})
+                    res.send({'id' : result[0].id, 'jwt': token})
                 }
             })
         }else{
