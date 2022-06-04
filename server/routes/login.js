@@ -39,7 +39,38 @@ app.post("/login", (req,res) => {
 })
 
 app.post("/create", (req,res) => {
-       
+    let data = []
+
+    let nome = req.body.nome
+    let sobrenome = req.body.sobrenome
+    let login = req.body.login
+    let data_nascimento = req.body.data_nascimento.split('/').reverse().join('-')
+    let genero = req.body.genero
+    let newsletter = req.body.newsletter
+    let senha = req.body.senha
+
+    let query = `
+        insert into usuarios
+        (nome, sobrenome, login, data_nascimento, genero, newsletter, senha)
+        values(?, ?, ?, ?, ?, ?, ?)
+    `
+    data.push(nome)
+    data.push(sobrenome)
+    data.push(login)
+    data.push(data_nascimento)
+    data.push(genero)
+    data.push(newsletter)
+    data.push(senha)
+
+    db.query(query, data, (err, result) => {
+        if(!err){
+            res.status(200)
+            res.send("ID: " + result.insertId)
+        }else{
+            res.status(401)
+            res.send(err)
+        }
+    })
 })
 
 module.exports = app;
