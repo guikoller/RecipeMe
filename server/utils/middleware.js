@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
                 res.send({err: "Token inválido"})
             }else{
                 req.token = token
-                req.loggedUser = {user: data.email, token: token}
+                req.loggedUser = {user: data.id, token: token}
                 next()
             }
         })

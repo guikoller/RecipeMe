@@ -15,7 +15,7 @@ app.post("/login", (req,res) => {
     
     db.query(query, data, (err, result) => {
         if(result.length > 0){
-            jwt.sign({login: login}, 'laudelindo', {expiresIn: '48h'}, (err, token) => {
+            jwt.sign({id: result[0].id}, 'laudelindo', {expiresIn: '48h'}, (err, token) => {
                 if (err) {
                     res.status(400)
                     res.send("ERROR: " + err )
