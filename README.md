@@ -27,3 +27,8 @@ $ npm run serve
 ```browse
 http://localhost:8080/
 ```
+- Usuário Padrão
+```
+login: teste
+senha: teste
+```
