@@ -4,19 +4,48 @@ const db = require('../database')
 const auth =  require('../utils/middleware')
 
 app.post("/", auth,(req,res) => {
+    let usuario_logado = req.loggedUser.user
+    let categoria = req.body.categoria_id
     let nome = req.body.nome
+    let descricao = req.body.descricao
+    let rendimento = req.body.rendimento
+    let tempo_preparo = req.body.tempo_preparo
+    let ingredientes = req.body.ingredientes
+
     let data = []
 
     let query = `
-        insert into ingredientes(nome)
-        values(?)
+        insert into receitas(usuario, categoria, nome, descricao, rendimento, tempo_preparo)
+        values(?,?,?,?,?,?)
     `
+    data.push(usuario_logado)
+    data.push(categoria)
     data.push(nome)
+    data.push(descricao)
+    data.push(rendimento)
+    data.push(tempo_preparo)
 
     db.query(query, data, (err, result) => {
         if(!err){
+            data = []
+            let id_nova_receita = result.insertId
+            for (let i = 0; i < ingredientes.length; i++) {
+                let query = `
+                    insert into ingredientes_receita(ingrediente, receita, medida, quantidade)
+                    values(?,?,?,?)
+                `
+                data.push(ingredientes[i].id_ingrediente)
+                data.push(id_nova_receita)
+                data.push(ingredientes[i].id_unidade)
+                data.push(ingredientes[i].quantidade)
+                try {
+                    db.query(query, data)
+                } catch (error) {
+                    res.status(200)
+                }                 
+            }
             res.status(200)
-            res.send("ID: " + result.insertId)
+            res.send("ID" + id_nova_receita)       
         }else{
             res.status(401)
             res.send(err)
@@ -89,7 +118,7 @@ app.get("/all", auth, (req, res) => {
     db.query(query, data, (err, result) => {
         if(!err){
             res.status(200)
-            res.send(result[0])
+            res.send(result)
         }else{
             res.status(401)
             res.send(err)
@@ -133,7 +162,7 @@ app.get('/possoFazer', auth, (req, res) => {
     db.query(query, data, (err, result) => {
         if(!err){
             if(result[0]){
-                let receita = result[0].receita
+                data = []
                 
                 let query = `select 
                                 receitas.id,
@@ -145,10 +174,22 @@ app.get('/possoFazer', auth, (req, res) => {
                                 inner join categorias on categorias.id = receitas.categoria
                                 where receitas.id = ?`
                 
-                db.query(query, receita, (err, result) => {
+                data.push(result[0].receita)
+
+                console.log(result)
+                
+                for(let i = 1; i < result.length; i++){
+                    query += ' or receitas.id = ? '
+                    data.push(result[i].receita)
+                }
+                
+                console.log(query)
+                console.log(data)
+
+                db.query(query, data, (err, result) => {
                     if(!err){
                         res.status(200)
-                        res.send(result[0])
+                        res.send(result)
                     }else{
                         res.status(401)
                         res.send(err)
@@ -190,17 +231,27 @@ app.put("/", auth, (req,res) => {
 
 app.delete("/", auth, (req,res) => {
     let id = req.body.id
-    let data = []
-
-    let query = `
-        delete from receitas where id = ?
-    `
-    data.push(id)
-
-    db.query(query, data, (err, result) => {
+    let query = `delete from ingredientes_receita where receita = ? `
+    db.query(query, id, (err, result) => {
         if(!err){
-            res.status(200)
-            res.send(result)
+            let query = `delete from comentarios where receita = ? `
+            db.query(query, id, (err, result) => {
+                if(!err){
+                    let query = `delete from receitas where id = ? `
+                    db.query(query, id, (err, result) => {
+                        if(!err){
+                            res.status(200)
+                            res.send(result)
+                        }else{
+                            res.status(401)
+                            res.send(err)
+                        }
+                    })
+                }else{
+                    res.status(401)
+                    res.send(err)
+                }
+            })
         }else{
             res.status(401)
             res.send(err)
