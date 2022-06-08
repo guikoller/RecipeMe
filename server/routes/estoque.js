@@ -34,7 +34,16 @@ app.get("/", auth, (req,res) => {
     let id = req.loggedUser.user
     let data = []
 
-    let query = `ingrediente, medida, quantidade where usuario = ?`
+    let query = `select 
+                    ingrediente as ingrediete_id, 
+                    ingredientes.nome as ingrediente,
+                    medida as medida_id,
+                    medidas.nome as medida,
+                    quantidade 
+                from estoque
+                    inner join ingredientes on ingredientes.id = ingrediente
+                    inner join medidas on medidas.id = estoque.medida
+                    where usuario = ?`
 
     data.push(id)    
 
@@ -87,7 +96,7 @@ app.delete("/", auth, (req,res) => {
     let data = []
 
     let query = `
-        delete from estoue where usuario = ? and ingrediente = ?
+        delete from estoque where usuario = ? and ingrediente = ?
     `
     data.push(id)
     data.push(ingrediente)
