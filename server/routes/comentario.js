@@ -12,12 +12,12 @@ app.post("/", auth,(req,res) => {
     let data = []
 
     let query = `
-        insert into cometarios(usuario,receita,data,avaliacao,texto)
+        insert into comentarios(usuario,receita,data,avaliacao,texto)
         values(?, ?, ?, ?, ?)
     `
     data.push(usuario)
     data.push(receita)
-    data.push(data_avaliacao)
+    data.push(data_avaliacao.split('/').reverse().join('-'))
     data.push(avaliacao)
     data.push(texto)
 
@@ -38,10 +38,10 @@ app.get("/", (req,res) => {
 
     let query = `
         select 
-            comentarios.usuario,
-            usuarios.nome,
+            comentarios.usuario as id_usuario,
+            usuarios.nome as usuario,
             comentarios.receita,
-            receitas.nome,
+            receitas.nome as receita,
             comentarios.data,
             comentarios.avaliacao,
             comentarios.texto
@@ -76,7 +76,7 @@ app.put("/", auth, (req,res) => {
     let data = []
 
     let query = `
-       update cometarios set texto = ?, avaliacao = ? where usuario = ? and receita = ?
+       update comentarios set texto = ?, avaliacao = ? where usuario = ? and receita = ?
     `
     data.push(texto)
     data.push(avaliacao)
@@ -96,13 +96,15 @@ app.put("/", auth, (req,res) => {
 })
 
 app.delete("/", auth, (req,res) => {
-    let id = req.body.id
+    let receita = req.body.receita
+    let usuario = req.loggedUser.user
     let data = []
 
     let query = `
         delete from comentarios where usuario = ? and receita = ?
     `
-    data.push(id)
+    data.push(usuario)
+    data.push(receita)
 
     db.query(query, data, (err, result) => {
         if(!err){
