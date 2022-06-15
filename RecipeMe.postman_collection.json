@@ -1,0 +1,864 @@
+{
+	"info": {
+		"_postman_id": "0dd42ec6-b78d-46ae-b907-ea5f3a7efc73",
+		"name": "RecipeMe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "create categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvZ2luIiwiaWF0IjoxNjU0MzAyNDc5LCJleHAiOjE2NTQ0NzUyNzl9.nsWEp5V7I_MEPBHsyWpM4wavFoAX5XQwzcYi9pKTa04",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"Peixes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete categoria",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjU0Mzg0MjM4LCJleHAiOjE2NTQ1NTcwMzh9.8VG-XaCTEd8QqHQ4Hzc_3lPRZuWedQ03I8XdExsubS0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categoria"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update categoria",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlIiwiaWF0IjoxNjU0MzAxNjM1LCJleHAiOjE2NTQ0NzQ0MzV9.r2TNjR08Ha2zqLEy2iBARo6lbq4wq2Y-Qc7yFm2sNRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 5,\n    \"nome\" : \"Peixes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/categoria",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comentario/Avaliação",
+			"item": [
+				{
+					"name": "create comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0ODg2MDU1LCJleHAiOjE2NTUwNTg4NTV9.fthDUVcTLNxgF259_Ud9foytfOQW1t0N3F0kUIMeXB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receita\" : \"1\",\n    \"data_avaliacao\" : \"10/06/2022\",\n    \"avaliacao\" : 5,\n    \"texto\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/comentario",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comentario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0ODg2MDU1LCJleHAiOjE2NTUwNTg4NTV9.fthDUVcTLNxgF259_Ud9foytfOQW1t0N3F0kUIMeXB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receita\" : \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/comentario",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comentario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0ODg2MDU1LCJleHAiOjE2NTUwNTg4NTV9.fthDUVcTLNxgF259_Ud9foytfOQW1t0N3F0kUIMeXB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/comentario?receita=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comentario"
+							],
+							"query": [
+								{
+									"key": "receita",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update comentario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0ODg2MDU1LCJleHAiOjE2NTUwNTg4NTV9.fthDUVcTLNxgF259_Ud9foytfOQW1t0N3F0kUIMeXB4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"receita\" : \"1\",\n    \"data_avaliacao\" : \"10/06/2022\",\n    \"avaliacao\" : 0.5,\n    \"texto\" : \"cu\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/comentario",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"comentario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ingrediente",
+			"item": [
+				{
+					"name": "create ingrediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImxvZ2luIiwiaWF0IjoxNjU0MzAyNDc5LCJleHAiOjE2NTQ0NzUyNzl9.nsWEp5V7I_MEPBHsyWpM4wavFoAX5XQwzcYi9pKTa04",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"Couve\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/ingrediente",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ingrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update ingrediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlIiwiaWF0IjoxNjU0MzAxNjM1LCJleHAiOjE2NTQ0NzQ0MzV9.r2TNjR08Ha2zqLEy2iBARo6lbq4wq2Y-Qc7yFm2sNRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 5,\n    \"nome\" : \"Peixes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/ingrediente",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ingrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete ingrediente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/ingrediente",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ingrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ingrediente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjkwOTA3LCJleHAiOjE2NTQ4NjM3MDd9.ljdI8e7X0Qxd_7gmVJJ4x--pC8B2V8LghfcqooWdq_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoria_id\" : 1,\n    \"nome\": \"TestKSDJFSKDLFSDe\",\n    \"descricao\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n    \"rendimento\": \"1.0\",\n    \"tempo_preparo\": \"600\",\n    \"ingredientes\": [\n        {\n            \"id_ingrediente\": \"2\",\n            \"id_unidade\": \"1\",\n            \"quantidade\": \"1.00\"\n        },\n        {\n            \"id_ingrediente\": \"3\",\n            \"id_unidade\": \"1\",\n            \"quantidade\": \"0.50\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/receita",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"receita"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estoque",
+			"item": [
+				{
+					"name": "create estoque",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjkwOTA3LCJleHAiOjE2NTQ4NjM3MDd9.ljdI8e7X0Qxd_7gmVJJ4x--pC8B2V8LghfcqooWdq_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ingrediente\" : \"1\",\n    \"medida\" : 1,\n    \"quantidade\" : 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/estoque",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update estoque",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlasdassc3RlIiwiaWF0IjoxNjU0MzAxNjM1LCJleHAiOjE2NTQ0NzQ0MzV9.r2TNjR08Ha2zqLEy2iBARo6lbq4wq2Y-Qc7yFm2sNRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : 5,\n    \"nome\" : \"Peixes\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/estoque",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete estoque",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/estoque",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get estoque",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjgwNjA2LCJleHAiOjE2NTQ4NTM0MDZ9.JMaxwqs03hO3R7A1SXZKjIxKiBtjX5DnNK-8cE4KRhQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/estoque",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Utils",
+			"item": [
+				{
+					"name": "ping",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/ping",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ping"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\" : \"aaa\",\n    \"sobrenome\": \"BBBB\",\n    \"login\" : \"login\",\n    \"data_nascimento\" : \"31/10/2000\",\n    \"genero\" : \"M\",\n    \"newsletter\" : 1,\n    \"senha\" : \"senha\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/auth/create",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"auth",
+								"create"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Receita",
+			"item": [
+				{
+					"name": "create receita",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjkwOTA3LCJleHAiOjE2NTQ4NjM3MDd9.ljdI8e7X0Qxd_7gmVJJ4x--pC8B2V8LghfcqooWdq_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoria_id\" : 1,\n    \"nome\": \"TestKSDJFSKDLFSDe\",\n    \"descricao\": \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\",\n    \"rendimento\": \"1.0\",\n    \"tempo_preparo\": \"600\",\n    \"ingredientes\": [\n        {\n            \"id_ingrediente\": \"2\",\n            \"id_unidade\": \"1\",\n            \"quantidade\": \"1.00\"\n        },\n        {\n            \"id_ingrediente\": \"3\",\n            \"id_unidade\": \"1\",\n            \"quantidade\": \"0.50\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/receita",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"receita"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update receita",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RlIiwiaWF0IjoxNjU0MzAxNjM1LCJleHAiOjE2NTQ0NzQ0MzV9.r2TNjR08Ha2zqLEy2iBARo6lbq4wq2Y-Qc7yFm2sNRs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"nome\": \"Miojo Temperado\",\n    \"descricao\": \"Aqueça o óleo em uma panela. Acrescente o alho picado e deixe dourar. Em seguida, coloque a mesma quantidade de água indicada na embalagem para fazer o miojo. Deixe ferver. Acrescente o macarrão e em seguida o caldo de galinha. Mexa por 1 minuto e deixe cozinhar no tempo indicado (geralmente 3 minutos). Adicione cheiro verde a gosto e sirva!.\",\n    \"rendimento\": \"1.0\",\n    \"tempo_preparo\": \"00:03:00\",\n    \"ingredientes\": [\n        {\n            \"nome\": \"Miojo\",\n            \"id_unidade\": \"Unidade\",\n            \"quantidade\": \"1.00\"\n        },\n        {\n            \"nome\": \"Caldo de Galinha\",\n            \"id_unidade\": \"Unidade\",\n            \"quantidade\": \"0.50\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/ingrediente",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"ingrediente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete receita",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0Mzg5MjgxLCJleHAiOjE2NTQ1NjIwODF9.L5ok42GuvM47hjMoJSeF3IqcDoegSExc7c0ie_ZymsM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\" : \"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/receita",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"receita"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get receita",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjkwOTA3LCJleHAiOjE2NTQ4NjM3MDd9.ljdI8e7X0Qxd_7gmVJJ4x--pC8B2V8LghfcqooWdq_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/receita?id=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"receita"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all receitas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjkwOTA3LCJleHAiOjE2NTQ4NjM3MDd9.ljdI8e7X0Qxd_7gmVJJ4x--pC8B2V8LghfcqooWdq_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/receita/all",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"receita",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get receitas que posso fazer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjU0NjkwOTA3LCJleHAiOjE2NTQ4NjM3MDd9.ljdI8e7X0Qxd_7gmVJJ4x--pC8B2V8LghfcqooWdq_o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/receita/possoFazer",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"receita",
+								"possoFazer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"login\" : \"teste\",\n    \"senha\" : \"teste\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/auth/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

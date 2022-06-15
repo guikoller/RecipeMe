@@ -53,7 +53,7 @@ app.post("/", auth,(req,res) => {
     }) 
 })
 
-app.get("/", auth, (req,res) => {
+app.get("/", (req,res) => {
     let id = req.query.id
     let usuario = req.query.usuario
     let data = []
@@ -104,7 +104,7 @@ app.get("/", auth, (req,res) => {
     })         
 })
 
-app.get("/all", auth, (req, res) => {
+app.get("/all", (req, res) => {
     let data = []
     let query = `select 
                     receitas.id,
