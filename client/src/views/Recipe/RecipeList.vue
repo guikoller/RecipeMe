@@ -25,6 +25,7 @@ import BaseCard from "@/components/BaseCard";
 import BaseButton from "@/components/BaseButton";
 import BaseTable from "@/components/BaseTable";
 import UtilityMixin from "@/mixins/utility.mixin";
+import axios from "axios";
 
 export default {
 	name: "RecipeList",
@@ -39,18 +40,18 @@ export default {
 				noDataText: "Erro: Não há nenhuma receita",
 				noResultsText: "Nenhuma receita encontrada!",
 				headers: [
-					{ text: "Nome", value: "name" },
-					{ text: "Tipo", value: "category.name" },
-					{ text: "Tempo de Preparo", value: "prepareTime" },
-					{ text: "Ingredientes", value: "hasIngredients" },
+					{ text: "Nome", value: "nome" },
+					// { text: "Tipo", value: "category.nome" },
+					{ text: "Rendimento", value: "rendimento" },
+					{ text: "Tempo de Preparo", value: "tempo_preparo" },
 					{ text: "", value: "actions" }
 				],
 				items: [
-					{ id: 0, name: "Pavê", 'category.name': "Sobremesas", prepareTime: "1 Hora", hasIngredients: true },
-					{ id: 1, name: "Miojo", 'category.name': "Massas", prepareTime: "8 Horas", hasIngredients: false },
-					{ id: 2, name: "Costela", 'category.name': "Carnes", prepareTime: "5 Horas", hasIngredients: true },
-					{ id: 3, name: "Arroz", 'category.name': "Grãos", prepareTime: "15 Minutos", hasIngredients: true },
-					{ id: 4, name: "Feijão", 'category.name': "Grãos", prepareTime: "1 Hora", hasIngredients: true },
+					// { id: 0, nome: "Pavê", 'category.nome': "Sobremesas", tempo_preparo: "1 Hora" },
+					// { id: 1, nome: "Miojo", 'category.nome': "Massas", tempo_preparo: "8 Horas" },
+					// { id: 2, nome: "Costela", 'category.nome': "Carnes", tempo_preparo: "5 Horas" },
+					// { id: 3, nome: "Arroz", 'category.nome': "Grãos", tempo_preparo: "15 Minutos" },
+					// { id: 4, nome: "Feijão", 'category.nome': "Grãos", tempo_preparo: "1 Hora" },
 				]
 			}
 		}
@@ -59,6 +60,10 @@ export default {
 		hasIngredientsSymbol(ing) {
 			return ing ? "👍" : "👎";
 		}
+	},
+	async mounted() {
+		let recipes = await axios.get('http://localhost:8081/receita/all');
+		this.recipeTable.items = recipes.data;
 	}
 }
 </script>
