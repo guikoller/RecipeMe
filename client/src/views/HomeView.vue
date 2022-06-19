@@ -9,7 +9,7 @@
 					RecipeMe, seu painel de receitas e gerenciamento de alimentos 👍
 				</div>
 			</template>
-			<div class="main-text px-15 mt-5"> {{loremIpsum.text}} </div>
+			<div class="main-text px-15 py-5"> {{loremIpsum.text}} </div>
 		</base-card>
 	</div>
 </template>
