@@ -11,12 +11,13 @@ app.post("/", auth,(req,res) => {
     let rendimento = req.body.rendimento
     let tempo_preparo = req.body.tempo_preparo
     let ingredientes = req.body.ingredientes
+    let imagem = req.body.imagem
 
     let data = []
 
     let query = `
-        insert into receitas(usuario, categoria, nome, descricao, rendimento, tempo_preparo)
-        values(?,?,?,?,?,?)
+        insert into receitas(usuario, categoria, nome, descricao, rendimento, tempo_preparo, url_imagem)
+        values(?,?,?,?,?,?,?)
     `
     data.push(usuario_logado)
     data.push(categoria)
@@ -24,6 +25,7 @@ app.post("/", auth,(req,res) => {
     data.push(descricao)
     data.push(rendimento)
     data.push(tempo_preparo)
+    data.push(imagem)
 
     db.query(query, data, (err, result) => {
         if(!err){
@@ -65,7 +67,8 @@ app.get("/", (req,res) => {
             receitas.nome,
             receitas.descricao,
             receitas.rendimento,
-            receitas.tempo_preparo
+            receitas.tempo_preparo,
+            receitas.url_imagem
         from receitas
             inner join categorias on categorias.id = receitas.categoria
     `
@@ -108,7 +111,7 @@ app.get("/all", (req, res) => {
     let data = []
     let query = `select 
                     receitas.id,
-                    categorias.nome,
+                    categorias.nome as categoria,
                     receitas.nome,
                     receitas.rendimento,
                     receitas.tempo_preparo

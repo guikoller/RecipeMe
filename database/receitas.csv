@@ -1,2 +1,2 @@
-id,usuario,categoria,nome,descricao,rendimento,tempo_preparo
-,1,1,Miojo Temperado,"Aqueça o óleo em uma panela. Acrescente o alho picado e deixe dourar. Em seguida, coloque a mesma quantidade de água indicada na embalagem para fazer o miojo. Deixe ferver. Acrescente o macarrão e em seguida o caldo de galinha. Mexa por 1 minuto e deixe cozinhar no tempo indicado (geralmente 3 minutos). Adicione cheiro verde a gosto e sirva!.",1,300
+id,usuario,categoria,nome,descricao,rendimento,tempo_preparo,url_imagem
+,1,1,Miojo Temperado,"Aqueça o óleo em uma panela. Acrescente o alho picado e deixe dourar. Em seguida, coloque a mesma quantidade de água indicada na embalagem para fazer o miojo. Deixe ferver. Acrescente o macarrão e em seguida o caldo de galinha. Mexa por 1 minuto e deixe cozinhar no tempo indicado (geralmente 3 minutos). Adicione cheiro verde a gosto e sirva!.",1,300,https://http2.mlstatic.com/D_NQ_NP_701442-MLB46725885754_072021-O.jpg
