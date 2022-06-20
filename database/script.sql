@@ -39,6 +39,7 @@ create table receitas(
     descricao text not null,
     rendimento decimal(2,1) not null,
     tempo_preparo time not null,
+    url_imagem text,
     foreign key (usuario) references usuarios(id),
     foreign key (categoria) references categorias(id)
 );
