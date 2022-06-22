@@ -7,12 +7,17 @@ import RecipeInfo from "@/views/Recipe/RecipeInfo";
 import RecipeList from "@/views/Recipe/RecipeList";
 import Login from "@/views/Login";
 import RecipeCreate from "@/views/Recipe/RecipeCreate";
+import CategoryList from "@/views/Category/CategoryList";
+import CategoryCreate from "@/views/Category/CategoryCreate";
 
 Vue.use(VueRouter)
 
 const routes = [
     { path: '/', component: HomeView, name: "Home", meta: { pageTitle: "Home" } },
     { path: '/login', component: Login, name: "Login", meta: { pageTitle: "Login" } },
+    // Categorias
+    { path: '/categorias', component: CategoryList, name: "CategoryList", meta: { auth: true, pageTitle: "Categorias" } },
+    { path: '/categorias/criar', component: CategoryCreate, name: "CategoryCreate", meta: { auth: true, pageTitle: "Criar nova categoria"} },
     // Receitas
     { path: '/receitas', component: RecipeList, name: "RecipeList", meta: { pageTitle: "Receitas" } },
     { path: '/receita/:id', component: RecipeInfo, name: "RecipeInfo", props: true, meta: { pageTitle: "Carregando receita"} },

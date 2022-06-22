@@ -25,12 +25,25 @@
 			</div>
 			<v-divider class="mx-2"/>
 			<div class="py-5 px-3">
-				<div class="text-h6 bold-text mb-2">Comentários</div>
-				<div v-for="(comment,i) in recipe.comments" :key="'comment'+i" class="mb-5">
-					<div class="bold-text">
-						{{ comment.user.name }} ({{ comment.score }}/5 ★) diz:
+				<div class="d-flex">
+					<div class="text-h6 bold-text mb-2">Comentários</div>
+					<base-button class="ml-auto" v-bind="commentBinds.button" @click="showCommentCreate = !showCommentCreate"/>
+				</div>
+				<v-card v-if="showCommentCreate" class="px-5 pt-4 mt-2">
+					<v-text-field filled v-bind="commentBinds.avaliacao" v-model="commentForm.avaliacao"/>
+					<v-textarea filled v-bind="commentBinds.texto" v-model="commentForm.texto"/>
+					<div class="d-flex">
+						<base-button class="ml-auto mb-3" v-bind="commentBinds.inButton" @click="addComment"/>
 					</div>
-					<div> {{ comment.text }}</div>
+				</v-card>
+				<div v-if="!$store.state.token">
+					Faça login para ver os comentários!
+				</div>
+				<div v-else v-for="(comment,i) in comments" :key="'comment'+i" class="mb-5">
+					<div class="bold-text">
+						{{formatDate(comment.data)}} - {{ comment.usuario }} ({{ Math.round(comment.avaliacao*5.555*10)/10 }}/5 ★) diz:
+					</div>
+					<div> {{ comment.texto }}</div>
 				</div>
 			</div>
 		</base-card>
@@ -41,54 +54,76 @@
 import BaseCard from "@/components/BaseCard";
 import UtilityMixin from "@/mixins/utility.mixin";
 import axios from "axios";
+import BaseButton from "@/components/BaseButton";
 
 export default {
 	name: "RecipeInfo",
-	components: { BaseCard },
+	components: {BaseButton, BaseCard },
 	mixins: [UtilityMixin],
 	props: {
 		id: [String, Number],
 	},
 	data() {
 		return {
-			// recipe: {
-			// 	nome: "Miojo",
-			// 	imgSrc: "https://http2.mlstatic.com/D_NQ_NP_701442-MLB46725885754_072021-O.jpg",
-			// 	ingredientes: [
-			// 		{ nome: "1 pacote de macarrão instantâneo" },
-			// 		{ nome: "1/2 cubo de caldo de galinha" },
-			// 		{ nome: "1 dente de alho picado" },
-			// 		{ nome: "1 colher(sopa) de óleo" },
-			// 		{ nome: "Cheiro verde picado" },
-			// 	],
-			// 	descricao: "Aqueça o óleo em uma panela.",
-			// 	comments: [
-			// 		{ user: { name: "Alfons" }, score: 2, text: "Não consegui fazer"},
-			// 		{ user: { name: "Alfons" }, score: 2, text: "Não consegui fazer"}
-			// 	]
-			// }
+			commentBinds: {
+				button: { buttonText: "Adicionar comentário" },
+				avaliacao: { type: "number", label: "Avaliação (0-5)" },
+				texto: { label: "Comentário" },
+				inButton: { buttonText: "Adicionar", color: "primary" },
+			},
+			commentForm: {
+				avaliacao: 0,
+				texto: ""
+			},
+			comments: [],
+			showCommentCreate: false,
 			recipe: {}
 		}
 	},
 	methods: {
+		async addComment() {
+			try {
+				let form = {...this.commentForm};
+				form.receita = this.id;
+				form.data_avaliacao = new Date().toLocaleDateString("pt-BR");
+				form.avaliacao = this.clampValue(form.avaliacao/5.555,0,0.9);
+				await axios.post("http://localhost:8081/comentario", form, this.axiosConfig());
+
+				// delete form.
+				form.data = form.data_avaliacao;
+				this.comments.push(form);
+				this.showCommentCreate = false;
+			} catch (e) {
+				console.log(e);
+				alert("Houve um erro!\n"+e);
+			}
+		},
+		clampValue(value, min, max) {
+			if (value < min) return min;
+			if (value > max) return max;
+			return value;
+		},
+		formatDate(dateString) {
+			return dateString.slice(0,10).replaceAll("-","/");
+		},
 		textIngredient(ingredient) {
 			let ingredientStr = "";
 			ingredientStr += this.decimalToFraction(parseFloat(ingredient.quantidade))+" ";
 			ingredientStr += this.getAttributeIfExists(ingredient, "nome_unidade").toLowerCase()+" de "
 			ingredientStr += this.getAttributeIfExists(ingredient, "nome").toLowerCase();
 			return ingredientStr;
-		},
-		textTempoPreparo(tempo_preparo) {
-			while(['0', ':'].includes(tempo_preparo.charAt(0))) {
-				tempo_preparo = tempo_preparo.substring(1);
-			}
-			return tempo_preparo;
 		}
 	},
 	async mounted() {
 		let recipeResponse = await axios.get('http://localhost:8081/receita', {params: { id: this.id }});
 		this.recipe = recipeResponse.data;
 		document.title = "RecipeMe | "+recipeResponse.data.nome;
+		try {
+			let commentResponse = await axios.get('http://localhost:8081/comentario', this.axiosConfig({ receita: this.id }));
+			this.comments = commentResponse.data;
+		} catch (e) {
+			console.log(e);
+		}
 	}
 }
 </script>

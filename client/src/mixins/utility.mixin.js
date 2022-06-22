@@ -2,10 +2,11 @@ import store from "@/plugins/vuex";
 
 const UtilityMixin = {
     methods: {
-        axiosConfig() {
+        axiosConfig(params = {}) {
             let bearerToken = "Bearer "+store.state.token;
             return {
-                headers: { Authorization: bearerToken }
+                headers: { Authorization: bearerToken },
+                params
             }
         },
         decimalToFraction(decimal) {

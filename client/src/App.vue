@@ -23,7 +23,8 @@ export default {
 		return {
 			appButtons: [
 				{ text: "Home", routeName: "Home" },
-				{ text: "Receitas", routeName: "RecipeList" },
+				{ text: "Receitas", routeName: "RecipeList", outlined: true },
+				{ text: "Categorias", routeName: "CategoryList"},
 				{ text: "Estoque", routeName: "Inventory" },
 				// { text: "Meu Perfil", routeName: "Profile", outlined: true },
 			]
