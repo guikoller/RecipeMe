@@ -4,11 +4,14 @@
 			<template #title>
 				<div class="d-flex title-div">
 					<span class="text-h4 recipe-title">Receitas</span>
-					<base-button class="ml-auto mt-1" v-bind="buttonCreateBind"/>
+					<base-button class="ml-auto mt-1" v-bind="buttonCreateBind" @click="routerPush('RecipeCreate')"/>
 				</div>
 			</template>
 			<v-divider class="mx-2"/>
 			<base-table v-bind="recipeTable">
+				<template #item.rendimento="{item}">
+					{{item.rendimento}} pessoa(s)
+				</template>
 				<template #item.hasIngredients="{item}">
 					{{hasIngredientsSymbol(item.hasIngredients)}}
 				</template>
@@ -41,7 +44,7 @@ export default {
 				noResultsText: "Nenhuma receita encontrada!",
 				headers: [
 					{ text: "Nome", value: "nome" },
-					// { text: "Tipo", value: "category.nome" },
+					{ text: "Categoria", value: "categoria" },
 					{ text: "Rendimento", value: "rendimento" },
 					{ text: "Tempo de Preparo", value: "tempo_preparo" },
 					{ text: "", value: "actions" }

@@ -25,7 +25,7 @@ export default {
 				{ text: "Home", routeName: "Home" },
 				{ text: "Receitas", routeName: "RecipeList" },
 				{ text: "Estoque", routeName: "Inventory" },
-				{ text: "Meu Perfil", routeName: "Profile", outlined: true },
+				// { text: "Meu Perfil", routeName: "Profile", outlined: true },
 			]
 		}
 	},

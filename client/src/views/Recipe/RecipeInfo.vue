@@ -7,7 +7,7 @@
 				</div>
 			</template>
 			<v-divider class="mx-2"/>
-			<v-img class="my-5" height="250" contain :src="recipe.imgSrc"/>
+			<v-img class="my-5" height="250" contain :src="getAttributeIfExists(recipe, 'url_imagem')"/>
 			<v-divider class="mx-2"/>
 			<div class="py-5 px-3">
 				<span class="bold-text">Rendimento: </span> {{textRendimento(recipe.rendimento)}} <br>
@@ -88,6 +88,7 @@ export default {
 	async mounted() {
 		let recipeResponse = await axios.get('http://localhost:8081/receita', {params: { id: this.id }});
 		this.recipe = recipeResponse.data;
+		document.title = "RecipeMe | "+recipeResponse.data.nome;
 	}
 }
 </script>

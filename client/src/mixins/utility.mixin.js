@@ -1,5 +1,13 @@
+import store from "@/plugins/vuex";
+
 const UtilityMixin = {
     methods: {
+        axiosConfig() {
+            let bearerToken = "Bearer "+store.state.token;
+            return {
+                headers: { Authorization: bearerToken }
+            }
+        },
         decimalToFraction(decimal) {
             let returnStr = "";
             if (decimal && typeof decimal === "number") {
