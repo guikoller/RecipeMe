@@ -6,6 +6,7 @@
 <!--				FormInternal{{formInternal}}-->
 				<v-select v-if="input.type === 'select'" filled no-data-text="Sem dados" v-bind="input" v-model="formInternal[i]"/>
 				<v-textarea v-else-if="input.type === 'textarea'" filled v-bind="input" v-model="formInternal[i]"/>
+				<v-checkbox v-else-if="input.type === 'checkbox'" filled v-bind="input" v-model="formInternal[i]"/>
 				<v-text-field v-else filled v-bind="input" v-model="formInternal[i]"/>
 			</slot>
 		</div>

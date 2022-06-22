@@ -5,7 +5,7 @@
 			<input v-model="data.login" type="text" placeholder="Login" required/>
 			<input v-model="data.senha" type="password" placeholder="Senha" required/>
 			<v-btn color="accent" @click="login">login</v-btn>
-<!--			<p class="message">Não é Registrado? <a href="#">Criar uma conta</a></p>-->
+			<div class="message mt-3">Não é Registrado? <a @click="routerPush('Register')">Criar uma conta</a></div>
 		</div>
 	</div>
 </template>

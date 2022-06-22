@@ -12,9 +12,6 @@
 				<template #item.rendimento="{item}">
 					{{item.rendimento}} pessoa(s)
 				</template>
-				<template #item.hasIngredients="{item}">
-					{{hasIngredientsSymbol(item.hasIngredients)}}
-				</template>
 				<template #item.actions="{item}">
 					<base-button button-text="Ver" @click="routerPush('RecipeInfo', {id: item.id})"/>
 				</template>
